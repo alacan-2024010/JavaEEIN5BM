@@ -17,15 +17,15 @@
     
     <nav>
         <ul>
-            <li><a href="cliente.jsp">Clientes</a></li>
-            <li><a href="proveedor.jsp">Proveedores</a></li>
-            <li><a href="producto.jsp">Productos</a></li>
-            <li><a href="empleado.jsp">Empleados</a></li>
-            <li><a href="venta.jsp">Ventas</a></li>
-            <li><a href="detalleVenta.jsp">Detalle Ventas</a></li>
-            <li><a href="factura.jsp">Facturas</a></li>
-            <li><a href="compras.jsp">Compras</a></li>
-            <li><a href="detalleCompra.jsp">Detalle Compras</a></li>
+            <li><a href="cliente.jsp" target="contenido">Clientes</a></li>
+            <li><a href="proveedor.jsp" target="contenido">Proveedores</a></li>
+            <li><a href="producto.jsp" target="contenido">Productos</a></li>
+            <li><a href="empleado.jsp" target="contenido">Empleados</a></li>
+            <li><a href="venta.jsp" target="contenido">Ventas</a></li>
+            <li><a href="detalleVenta.jsp" target="contenido">Detalle Ventas</a></li>
+            <li><a href="factura.jsp" target="contenido">Facturas</a></li>
+            <li><a href="compras.jsp" target="contenido">Compras</a></li>
+            <li><a href="detalleCompra.jsp" target="contenido">Detalle Compras</a></li>
             <li class="avatar">
                 <img src="img/UsuarioAdmin.png" alt="Avatar">
                 <ul class="avatar-menu">
@@ -38,6 +38,10 @@
 
         <div class="panel">
             <h2>Bienvenido a la ventana de Administrador</h2>
+        </div>
+    
+        <div class="contenido">
+            <iframe name="contenido"></iframe>
         </div>
 
 </body>

@@ -16,7 +16,7 @@
     </head>
 
     <nav>
-        <a href="index.jsp" class="titulo"> Essenza & Co.</a>
+        <a href="index.html" class="titulo"> Essenza & Co.</a>
         <div class="links">
             <a href="acercaNosotros.jsp">Acerca de nosotros</a>
         </div>
@@ -36,10 +36,10 @@
             <p>Essenza & Co.</p>
             <p class="subtitulo">Ingresa tus datos para iniciar sesion</p>
 
-            <form action="admin.jsp">
-                <input type="correo" placeholder="Correo" required />
-                <input type="contrasenia" placeholder="Contrasenia" required />
-                <button type="submit" class="boton-brillante">Iniciar Sesión</button>
+            <form action="Validar" method="POST" class="formulario">
+                <input type="text" name="txtCorreo" placeholder="Correo" required />
+                <input type="password" name="txtContrasena" placeholder="Contrasenia" required />
+                <button type="submit" name="btnIngresar" value="Ingresar"class="boton-brillante">Iniciar Sesión</button>
                 <div class="extras">
                     <label><input type="checkbox" />Recordarme</label>
                     <a href="#">¿Olvidaste la contraseña?</a>

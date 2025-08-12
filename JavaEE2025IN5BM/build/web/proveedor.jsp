@@ -15,25 +15,25 @@
 <body>
 
     <nav>
-        <a href="admin.jsp" class="logo">Essenza &amp; Co.</a>
+        
     </nav>
 
     <div class="contenedor-principal">
 
         <div class="form-container">
             <h2>Gestión de Proveedores</h2>
-            <form>
-                <input type="text" id="codigo" placeholder="Código del Proveedor" required />
-                <input type="text" id="nombre" placeholder="Nombre" required />
-                <input type="text" id="direccion" placeholder="Dirección" required />
-                <input type="text" id="celular" placeholder="Celular" required />
-                <input type="email" id="correo" placeholder="Correo" required />
+            <form action=""method="post" class="formulario">
+                <input type="text" name="txtCodigoProveedor" placeholder="Código del Proveedor" required />
+                <input type="text" name="txtNombre" placeholder="Nombre" required />
+                <input type="text" name="txtDireccion" placeholder="Dirección" required />
+                <input type="text" name="txtCelular" placeholder="Celular" required />
+                <input type="email" name="txtCorreo" placeholder="Correo" required />
 
                 <div class="botones">
-                    <button type="submit" class="agregar">Agregar</button>
-                    <button type="submit" class="actualizar">Actualizar</button>
-                    <button type="submit" class="buscar">Buscar</button>
-                    <button type="submit" class="eliminar">Eliminar</button>
+                    <button type="submit" name="btnAgregar">Agregar</button>
+                    <button type="submit" name="btnActualizar">Actualizar</button>
+                    <button type="submit" name="btnBuscar">Buscar</button>
+                    <button type="submit" name="btnEliminar">Eliminar</button>
                 </div>
             </form>
             <div class="marca-interna">

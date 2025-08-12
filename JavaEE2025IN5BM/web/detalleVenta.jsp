@@ -16,7 +16,7 @@
 <body>
 
     <nav>
-        <a href="admin.jsp" class="logo"> Essenza & Co.</a>
+        
     </nav>
     
     <div class="fondo"></div>
@@ -31,7 +31,7 @@
                 <input type="text" id="codigoVenta" placeholder="Codigo de Venta" />
                 <input type="text" id="codigoProducto" placeholder="Codigo de Producto" />
             <div class="botones">
-            <button>
+            <button type="submit" name="btnAgregar" value="Agregar">
                 <div class="svg-wrapper-1">
                     <div class="svg-wrapper">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
@@ -50,7 +50,8 @@
                     </div>
                 </div>
                 <span>Agregar</span>
-                <button>
+            </button>
+                <button type="submit" name="btnEditar" value="Editar">
                     <div class="svg-wrapper-1">
                         <div class="svg-wrapper">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
@@ -62,7 +63,8 @@
                         </div>
                     </div>
                     <span>Editar</span>
-                    <button>
+                </button>
+                    <button type="submit" name="btnBuscar" value="Buscar">
                         <div class="svg-wrapper-1">
                             <div class="svg-wrapper">
                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
@@ -83,76 +85,77 @@
                             </div>
                         </div>
                         <span>Buscar</span>
-<button id="eliminarButton" class="Eliminar">
-    <div class="svg-wrapper-1">
-        <div class="svg-wrapper">
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50" class="iconoEliminar">
-                <path d="M 21 2 C 19.354545 2 18 3.3545455 18 5 L 18 7 L 8 7 A 1.0001 1.0001 0 1 0 8 9 L 9 9 L 9 45 C 9 46.7 10.3 48 12 48 L 38 48 C 39.7 48 41 46.7 41 45 L 41 9 L 42 9 A 1.0001 1.0001 0 1 0 42 7 L 32 7 L 32 5 C 32 3.3545455 30.645455 2 29 2 L 21 2 z M 21 4 L 29 4 C 29.554545 4 30 4.4454545 30 5 L 30 7 L 20 7 L 20 5 C 20 4.4454545 20.445455 4 21 4 z M 19 14 C 19.6 14 20 14.4 20 15 L 20 40 C 20 40.6 19.6 41 19 41 C 18.4 41 18 40.6 18 40 L 18 15 C 18 14.4 18.4 14 19 14 z M 25 14 C 25.6 14 26 14.4 26 15 L 26 40 C 26 40.6 25.6 41 25 41 C 24.4 41 24 40.6 24 40 L 24 15 C 24 14.4 24.4 14 25 14 z M 31 14 C 31.6 14 32 14.4 32 15 L 32 40 C 32 40.6 31.6 41 31 41 C 30.4 41 30 40.6 30 40 L 30 15 C 30 14.4 30.4 14 31 14 z"></path>
-            </svg>
-        </div>
-    </div>
-    <span>Eliminar</span>
-</button>
+                    </button>
+                        <button type="submit" name="btnEliminar" value="Eliminar">
+                            <div class="svg-wrapper-1">
+                                <div class="svg-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50" class="iconoEliminar">
+                                        <path d="M 21 2 C 19.354545 2 18 3.3545455 18 5 L 18 7 L 8 7 A 1.0001 1.0001 0 1 0 8 9 L 9 9 L 9 45 C 9 46.7 10.3 48 12 48 L 38 48 C 39.7 48 41 46.7 41 45 L 41 9 L 42 9 A 1.0001 1.0001 0 1 0 42 7 L 32 7 L 32 5 C 32 3.3545455 30.645455 2 29 2 L 21 2 z M 21 4 L 29 4 C 29.554545 4 30 4.4454545 30 5 L 30 7 L 20 7 L 20 5 C 20 4.4454545 20.445455 4 21 4 z M 19 14 C 19.6 14 20 14.4 20 15 L 20 40 C 20 40.6 19.6 41 19 41 C 18.4 41 18 40.6 18 40 L 18 15 C 18 14.4 18.4 14 19 14 z M 25 14 C 25.6 14 26 14.4 26 15 L 26 40 C 26 40.6 25.6 41 25 41 C 24.4 41 24 40.6 24 40 L 24 15 C 24 14.4 24.4 14 25 14 z M 31 14 C 31.6 14 32 14.4 32 15 L 32 40 C 32 40.6 31.6 41 31 41 C 30.4 41 30 40.6 30 40 L 30 15 C 30 14.4 30.4 14 31 14 z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <span>Eliminar</span>
+                        </button>
 
-<div id="confirmacionModal" class="modal">
-    <div class="modal-content">
-        <img src="../Images/Warning.png" alt="Imagen de Advertencia">
-        <h2>¿Estás seguro de que deseas eliminar este registro?</h2>
-        <button id="confirmarEliminacion">Sí, Eliminar</button>
-        <button id="cancelarEliminacion">Cancelar</button>
-    </div>
-</div>
+                        <div id="confirmacionModal" class="modal">
+                            <div class="modal-content">
+                                <img src="../Images/Warning.png" alt="Imagen de Advertencia">
+                                <h2>¿Estás seguro de que deseas eliminar este registro?</h2>
+                                <button id="confirmarEliminacion">Sí, Eliminar</button>
+                                <button id="cancelarEliminacion">Cancelar</button>
+                            </div>
+                        </div>
 
-<script>
-    const eliminarButton = document.getElementById('eliminarButton');
-    const confirmacionModal = document.getElementById('confirmacionModal');
-    const confirmarEliminacion = document.getElementById('confirmarEliminacion');
-    const cancelarEliminacion = document.getElementById('cancelarEliminacion');
+                        <script>
+                            const eliminarButton = document.getElementById('eliminarButton');
+                            const confirmacionModal = document.getElementById('confirmacionModal');
+                            const confirmarEliminacion = document.getElementById('confirmarEliminacion');
+                            const cancelarEliminacion = document.getElementById('cancelarEliminacion');
 
-    eliminarButton.addEventListener('click', function(event) {
-        confirmacionModal.style.display = 'flex'; 
-    });
+                            eliminarButton.addEventListener('click', function(event) {
+                                confirmacionModal.style.display = 'flex'; 
+                            });
 
-    confirmarEliminacion.addEventListener('click', function() {
-        alert('¡El registro ha sido eliminado!');
-        
-        confirmacionModal.style.display = 'none';
-    });
+                            confirmarEliminacion.addEventListener('click', function() {
+                                alert('¡El registro ha sido eliminado!');
 
-    cancelarEliminacion.addEventListener('click', function() {
-        confirmacionModal.style.display = 'none'; 
-    });
+                                confirmacionModal.style.display = 'none';
+                            });
 
-    window.addEventListener('click', function(event) {
-        if (event.target === confirmacionModal) {
-            confirmacionModal.style.display = 'none';
-        }
-    });
-</script>
-                   
-            </div>
-            <div class="marca-interna">
-            Essenza & Co.
-        </div>
+                            cancelarEliminacion.addEventListener('click', function() {
+                                confirmacionModal.style.display = 'none'; 
+                            });
 
-        </div>
-        </div>
+                            window.addEventListener('click', function(event) {
+                                if (event.target === confirmacionModal) {
+                                    confirmacionModal.style.display = 'none';
+                                }
+                            });
+                        </script>
 
-        <div class="panel-tabla">
-            <div class="tabla-contenedor">
-                <table class="tabla">
-                <thead>
-                <tr>
-                    <th>Codigo de Detalle Venta</th>
-                    <th>Cantidad</th>
-                    <th>Precio Unitario</th>
-                    <th>Codigo de Venta</th>
-                    <th>Codigo de Producto</th>
-                </tr>
-                </thead>
-            </table>
-            </div> 
-        </div> 
-    </div>  
+                                    </div>
+                                    <div class="marca-interna">
+                                    Essenza & Co.
+                                </div>
+
+                                </div>
+                                </div>
+
+                                <div class="panel-tabla">
+                                    <div class="tabla-contenedor">
+                                        <table class="tabla">
+                                        <thead>
+                                        <tr>
+                                            <th>Codigo de Detalle Venta</th>
+                                            <th>Cantidad</th>
+                                            <th>Precio Unitario</th>
+                                            <th>Codigo de Venta</th>
+                                            <th>Codigo de Producto</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                    </div> 
+                                </div> 
+                            </div>  
 </body>
 </html>

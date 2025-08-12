@@ -15,24 +15,24 @@
 <body>
 
     <nav>
-        <a href="admin.jsp" class="logo">Essenza & Co.</a>
+        
     </nav>
 
     <div class="contenedor-principal">
 
         <div class="form-container">
             <h2>Gestión de Productos</h2>
-            <form>
-                <input type="text" placeholder="Cantidad" required>
-                <input type="text" placeholder="Precio Unitario" required>
-                <input type="email" placeholder="Codigo Compra" required>
-                <input type="password" placeholder="Codigo Producto" required>
+            <form action=""method="post" class="formulario">
+                <input type="text" name="txtCantidad" placeholder="Cantidad" required>
+                <input type="text" name="txtPrecio" placeholder="Precio Unitario" required>
+                <input type="text" name="txtCodigoCompra" placeholder="Codigo Compra" required>
+                <input type="text" name="txtCodigoProducto" placeholder="Codigo Producto" required>
 
                 <div class="botones">
-                    <button type="submit">Agregar</button>
-                    <button type="submit">Actualizar</button>
-                    <button type="submit">Buscar</button>
-                    <button type="submit">Eliminar</button>
+                    <button type="submit" name="btnAgregar">Agregar</button>
+                    <button type="submit" name="btnActualizar">Actualizar</button>
+                    <button type="submit" name="btnBuscar">Buscar</button>
+                    <button type="submit" name="btnEliminar">Eliminar</button>
                 </div>
             </form>
         </div>

@@ -21,7 +21,7 @@
     <body>
 
         <nav>
-            <a href="admin.jsp" class="logo">Essenza & Co.</a>
+            
         </nav>
         <div class="fondo"></div>
 
