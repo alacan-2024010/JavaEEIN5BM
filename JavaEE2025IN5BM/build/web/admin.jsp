@@ -29,8 +29,9 @@
             <li class="avatar">
                 <img src="img/UsuarioAdmin.png" alt="Avatar">
                 <ul class="avatar-menu">
-                    <li><a href="principal.jsp">Cambiar Cuenta</a></li>
-                    <li><a href="index.jsp">Cerrar sesión</a></li>
+                    <li>${correo.emailEmpleado}</li>
+                    <li><a href="Controlador?menu=Cambiar">Cambiar Cuenta</a></li>
+                    <li><a href="Controlador?menu=Cerrar">Cerrar sesión</a></li>
                 </ul>
             </li>
         </ul>

@@ -31,26 +31,49 @@ public class Controlador extends HttpServlet {
         
             String menu = request.getParameter("menu");
             String accion = request.getParameter("accion");
+            
             if (menu.equals("Principal")) {
                 request.getRequestDispatcher("admin.jsp").forward(request, response);
-            }else if(menu.equals("Cliente")){
-                request.getRequestDispatcher("cliente.jsp").forward(request, response);
-            }else if(menu.equals("Proveedor")){
-                request.getRequestDispatcher("proveedor.jsp").forward(request, response);
-            }else if(menu.equals("Producto")){
-                request.getRequestDispatcher("producto.jsp").forward(request, response);
-            }else if(menu.equals("Empleado")){
-                request.getRequestDispatcher("empleado.jsp").forward(request, response);
-            }else if(menu.equals("Venta")){
-                request.getRequestDispatcher("venta.jsp").forward(request, response);
-            }else if(menu.equals("DetalleVenta")){
-                request.getRequestDispatcher("detalleVenta.jsp").forward(request, response);
-            }else if(menu.equals("Factura")){
-                request.getRequestDispatcher("factura.jsp").forward(request, response);
-            }else if(menu.equals("Compra")){
-                request.getRequestDispatcher("compras.jsp").forward(request, response);
-            }else if(menu.equals("DetalleCompra")){
-                request.getRequestDispatcher("detalleCompra.jsp").forward(request, response);
+            }
+            
+            if(menu!=null){
+                switch (menu) {
+                    case "Cliente":
+                        request.getRequestDispatcher("cliente.jsp").forward(request, response);
+                        break;
+                    case "Proveedor":
+                        request.getRequestDispatcher("proveedor.jsp").forward(request, response);
+                        break;
+                    case "Producto":
+                        request.getRequestDispatcher("producto.jsp").forward(request, response);
+                        break;
+                    case "Empleado":
+                        request.getRequestDispatcher("empleado.jsp").forward(request, response);
+                        break;
+                    case "Venta":
+                        request.getRequestDispatcher("venta.jsp").forward(request, response);
+                        break;
+                    case "DetalleVenta":
+                        request.getRequestDispatcher("detalleVenta.jsp").forward(request, response);
+                        break;
+                    case "Factura":
+                        request.getRequestDispatcher("factura.jsp").forward(request, response);
+                        break;
+                    case "Compra":
+                        request.getRequestDispatcher("compras.jsp").forward(request, response);
+                        break;
+                    case "DetalleCompra":
+                        request.getRequestDispatcher("detalleCompra.jsp").forward(request, response);
+                        break;
+                    case "Cambiar":
+                        request.getRequestDispatcher("principal.jsp").forward(request, response);
+                        break;
+                    case "Cerrar":
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
             }
     }
 
