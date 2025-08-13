@@ -1,75 +1,56 @@
 package Modelo;
 
+import Config.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
 
 public class ProveedorDAO {
-
-    private EntityManagerFactory emf;
-    private EntityManager em;
-
-    public ProveedorDAO() {
-        emf = Persistence.createEntityManagerFactory("dominio");
-        em = emf.createEntityManager();
-    }
-
-    // Agregar proveedor
-    public void agregarProveedor(Proveedor proveedor) {
+    
+    Conexion cn= new Conexion();
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    int resp;
+    
+    public List listar(){
+        String sql = "call sp_ListarProveedores()";
+        List<Proveedor> listaProveedor = new ArrayList<>();
         try {
-            em.getTransaction().begin();
-            em.persist(proveedor);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-            System.out.println("Error al agregar proveedor: " + e.getMessage());
-        }
-    }
-
-    // Buscar proveedor por ID
-    public Proveedor buscarProveedorPorId(int codigoProveedor) {
-        return em.find(Proveedor.class, codigoProveedor);
-    }
-
-    // Actualizar proveedor
-    public void actualizarProveedor(Proveedor proveedor) {
-        try {
-            em.getTransaction().begin();
-            em.merge(proveedor);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-            System.out.println("Error al actualizar proveedor: " + e.getMessage());
-        }
-    }
-
-    // Eliminar proveedor
-    public void eliminarProveedor(int codigoProveedor) {
-        try {
-            Proveedor proveedor = em.find(Proveedor.class, codigoProveedor);
-            if (proveedor != null) {
-                em.getTransaction().begin();
-                em.remove(proveedor);
-                em.getTransaction().commit();
+            con = cn.Conexion();
+            ps= con.prepareStatement(sql);
+            rs= ps.executeQuery();
+            while (rs.next()) {
+                Proveedor pr = new Proveedor();
+                pr.setCodigoProveedor(rs.getInt(1));
+                pr.setNombreProveedor(rs.getString(2));
+                pr.setDireccionProveedor(rs.getString(3));
+                pr.setTelefonoProveedor(rs.getString(4));
+                pr.setCorreoProveedor(rs.getString(5));
+                listaProveedor.add(pr);
             }
         } catch (Exception e) {
-            em.getTransaction().rollback();
-            System.out.println("Error al eliminar proveedor: " + e.getMessage());
+            e.printStackTrace();
         }
+        return listaProveedor;
     }
-
-    // Listar todos los proveedores
-    public List<Proveedor> listarProveedores() {
-        TypedQuery<Proveedor> query = em.createQuery("SELECT p FROM Proveedor p", Proveedor.class);
-        return query.getResultList();
-    }
-
-    // Cerrar recursos
-    public void cerrar() {
-        em.close();
-        emf.close();
+    
+    public int agregar(Proveedor pro){
+        String sql= "call sp_AgregarProveedores(?,?,?,?)";
+        try {
+            con = cn.Conexion();
+            ps=con.prepareStatement(sql);
+            ps.setString(1,pro.getNombreProveedor());
+            ps.setString(2,pro.getDireccionProveedor());
+            ps.setString(3,pro.getTelefonoProveedor());
+            ps.setString(4,pro.getCorreoProveedor());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resp;
     }
 }
 

@@ -6,6 +6,8 @@ package Controlador;
 
 import Modelo.Empleado;
 import Modelo.EmpleadoDAO;
+import Modelo.Proveedor;
+import Modelo.ProveedorDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -21,6 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 public class Controlador extends HttpServlet {
     Empleado empleado = new Empleado();
     EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+    Proveedor proveedor = new Proveedor();
+    ProveedorDAO proveedorDAO = new ProveedorDAO();
     int codEmpleado;
     
     /**
@@ -48,6 +52,34 @@ public class Controlador extends HttpServlet {
                         request.getRequestDispatcher("cliente.jsp").forward(request, response);
                         break;
                     case "Proveedor":
+                        switch (accion) {
+                            case "Listar":
+                                List listaProveedor = proveedorDAO.listar();
+                                request.setAttribute("proveedores", listaProveedor);
+                                break;
+                            case "Agregar":
+                                String nombre = request.getParameter("txtNombreProveedor");
+                                String direccion = request.getParameter("txtDireccion");
+                                String celular = request.getParameter("txtCelular");
+                                String correo = request.getParameter("txtCorreo");
+                                proveedor.setNombreProveedor(nombre);
+                                proveedor.setDireccionProveedor(direccion);
+                                proveedor.setTelefonoProveedor(celular);
+                                proveedor.setCorreoProveedor(correo);
+                                proveedorDAO.agregar(proveedor);
+                                request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request,response);
+                                break;
+                            case "Editar":
+                                break;
+                            case "Actualizar":
+                                break;
+                            case "Eliminar":
+                                break;
+                            case "Buscar":
+                                break;
+                            default:
+                                throw new AssertionError();
+                        }
                         request.getRequestDispatcher("proveedor.jsp").forward(request, response);
                         break;
                     case "Producto":

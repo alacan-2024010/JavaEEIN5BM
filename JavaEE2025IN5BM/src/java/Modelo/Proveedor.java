@@ -1,27 +1,16 @@
 package Modelo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "Proveedores")
 public class Proveedor {
 
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigoProveedor;
-    @Column
+
     private String nombreProveedor;
-    @Column
+
     private String direccionProveedor;
-    @Column
+
     private String telefonoProveedor;
-    @Column
+
     private String correoProveedor;
 
     public Proveedor() {
@@ -73,13 +62,5 @@ public class Proveedor {
 
     public void setCorreoProveedor(String correoProveedor) {
         this.correoProveedor = correoProveedor;
-    }
-
-    @Override
-    public String toString() {
-        return "Proveedor{" + "codigoProveedor=" + codigoProveedor
-                + ", nombreProveedor=" + nombreProveedor + ", direccionProveedor="
-                + direccionProveedor + ", telefonoProveedor=" + telefonoProveedor
-                + ", correoProveedor=" + correoProveedor + '}';
     }
 }
