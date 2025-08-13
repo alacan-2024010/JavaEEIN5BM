@@ -1,229 +1,397 @@
+:root {
+    --dorado: #d4b067;
+    --oscuro: #000000;
+    --gris: #f0f0f0;
+    --borde: #444;
+    --hover: #b8860b;
+    --transicion: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-image: url("../img/FondoProductos.png");
+    background-image: url('../img/FondoProductos.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     color: #fefefe;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     min-height: 100vh;
-    font-size: clamp(14px, 2.5vw, 16px);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5));
+    z-index: -1;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    transition: var(--transicion);
+}
+
+nav .logo {
+    font-size: 2.5em;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(to right, var(--dorado), #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: var(--transicion);
+}
+
+nav .logo:hover {
+    transform: scale(1.05);
 }
 
 .contenedor-principal {
     display: flex;
-    flex-direction: row;
     width: 90%;
     max-width: 1400px;
-    min-height: 80vh;
-    background: rgba(0, 0, 0, 0.75);
+    height: 80vh;
+    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(15px);
     border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    margin: clamp(20px, 5vh, 40px) 0;
+    margin: 20px auto 0 auto;
+    transform: translateY(0);
+    transition: var(--transicion);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.contenedor-principal::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(212, 176, 103, 0.1) 0%,
+        rgba(212, 176, 103, 0) 30%,
+        rgba(212, 176, 103, 0.1) 60%,
+        rgba(212, 176, 103, 0) 100%
+    );
+    transform: rotate(30deg);
+    pointer-events: none;
+    animation: shine 5s infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: rotate(30deg) translate(-20%, -20%);
+    }
+    100% {
+        transform: rotate(30deg) translate(20%, 20%);
+    }
 }
 
 .panel-formulario {
     flex: 1;
-    padding: clamp(15px, 3vw, 30px);
+    padding: 30px;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: clamp(10px, 2vw, 20px);
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px 0 0 20px;
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .panel-formulario h1 {
     margin: 0;
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: 2.2rem;
     text-align: center;
-    color: #d4b067;
+    color: var(--dorado);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.panel-formulario h1::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, var(--dorado), #ffffff);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
 }
 
 .formulario {
     display: flex;
     flex-direction: column;
-    gap: clamp(8px, 2vw, 15px);
+    gap: 15px;
 }
 
 .formulario input {
-    padding: clamp(8px, 1.5vw, 12px);
+    padding: 18px;
+    font-size: 1.1rem;
     border: none;
-    border-radius: 10px;
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    background-color: #e7e7e2;
-    color: #111;
-    width: 100%;
-    box-sizing: border-box;
+    border-radius: 12px;
+    background-color: #000000;
+    color: white;
+    transition: var(--transicion);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.formulario input:focus {
+    outline: none;
+    border-color: var(--dorado);
+    box-shadow: 0 0 0 3px rgba(212, 176, 103, 0.5), 0 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: rgba(50, 50, 50, 0.8);
 }
 
 .botones {
     display: flex;
     flex-wrap: wrap;
-    gap: clamp(5px, 1vw, 10px);
+    gap: 10px;
 }
 
-button {
-    font-family: inherit;
-    font-size: clamp(16px, 2.5vw, 20px);
-    background: #212121;
-    color: white;
-    fill: rgb(155, 153, 153);
-    padding: clamp(0.5em, 1vw, 0.7em) clamp(0.7em, 1.5vw, 1em);
-    padding-left: clamp(0.7em, 1.2vw, 0.9em);
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+.botones button {
+    flex: 1 1 40%;
+    padding: 10px 20px;
+    background-color: #b68d40;
     border: none;
-    border-radius: 15px;
-    font-weight: 1000;
-    flex: 1 1 clamp(150px, 40%, 200px);
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    touch-action: manipulation;
+    display: inline-block;
+    outline: none;
+    font-family: inherit;
+    font-size: 1em;
+    box-sizing: border-box;
+    border-radius: 0.3em;
+    height: 2.75em;
+    line-height: 2.5em;
+    text-transform: uppercase;
+    padding: 0 1em;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(110, 80, 20, 0.4),
+        inset 0 -2px 5px 1px rgba(139, 66, 8, 1),
+        inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+    background-image: linear-gradient(
+        160deg,
+        #a54e07,
+        #b47e11,
+        #fef1a2,
+        #bc881b,
+        #a54e07
+    );
+    border: 1px solid #a55d07;
+    color: rgb(120, 50, 5);
+    text-shadow: 0 2px 2px rgba(250, 227, 133, 1);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background-size: 100% 100%;
+    background-position: center;
 }
 
-button span {
+.botones button:hover {
+    background-color: #ffaa33;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+    background-size: 150% 150%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23),
+        inset 0 -2px 5px 1px #b17d10, inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+    border: 1px solid rgba(165, 93, 7, 0.6);
+    color: rgba(120, 50, 5, 0.8);
+}
+
+.botones button:active {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(110, 80, 20, 0.4),
+        inset 0 -2px 5px 1px #b17d10, inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
+    color: white;
+}
+
+.botones .eliminar {
+    background-color: #ff1900;
+    background-image: linear-gradient(
+        160deg,
+        #ff1900 0%,
+        #ff5c33 50%,
+        #ff1900 100%
+    );
+    border: 1px solid #b52800;
+    color: white;
+    text-shadow: 0 2px 4px rgba(255, 0, 0, 0.7);
+    box-shadow: 0 4px 6px rgba(255, 0, 0, 0.2), 0 4px 10px rgba(255, 87, 34, 0.5);
+    transition: all 0.3s ease;
+}
+
+.botones .eliminar:hover {
+    background-color: #c01604;
+    background-image: linear-gradient(
+        160deg,
+        #c01604 0%,
+        #ff5c33 50%,
+        #c01604 100%
+    );
+    background-size: 150% 150%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23),
+        inset 0 -2px 5px 1px rgba(255, 87, 34, 0.7), inset 0 -1px 1px 3px rgba(255, 87, 34, 0.7);
+    border: 1px solid #9e1603;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.botones .eliminar:active {
+    background-color: #9e1603;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(110, 80, 20, 0.4),
+        inset 0 -2px 5px 1px #9e1603, inset 0 -1px 1px 3px rgba(247, 64, 9, 0.5);
+}
+
+/* Ocultar iconos SVG y ajustar botones para que sean solo texto */
+.botones button .svg-wrapper-1,
+.botones button .svg-wrapper,
+.botones button svg {
+    display: none !important;
+}
+
+.botones button span {
     display: block;
-    margin-left: 0.3em;
-    transition: all 0.3s ease-in-out;
-}
-
-button svg {
-    display: block;
-    transform-origin: center center;
-    transition: transform 0.3s ease-in-out;
-}
-
-button:hover {
-    background: #000;
-}
-
-button:hover .svg-wrapper {
-    transform: scale(1.25);
-    transition: 0.5s linear;
-}
-
-button:hover svg {
-    transform: translateX(clamp(2em, 3vw, 3.5em)) scale(1.2);
-    fill: #fff;
-}
-
-button:hover .iconoEliminar {
-    fill: red;
-}
-
-button:hover span {
-    opacity: 0;
-    transition: 0.5s linear;
-}
-
-button:active {
-    transform: scale(0.95);
-}
-
-.Eliminar:hover {
-    background-color: rgb(68, 8, 8);
+    width: 100%;
+    text-align: center;
 }
 
 .panel-tabla {
     flex: 1.5;
     background-color: rgba(255, 255, 255, 0.1);
-    padding: clamp(15px, 3vw, 30px);
+    padding: 30px;
     display: flex;
     flex-direction: column;
+    border-radius: 0 20px 20px 0;
+    backdrop-filter: blur(10px);
 }
 
 .tabla-contenedor {
     overflow-y: auto;
     flex: 1;
     border-radius: 10px;
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
+    background-color: rgba(26, 26, 26, 0.8);
 }
 
 .tabla {
     width: 100%;
     border-collapse: collapse;
-    background-color: #ffffffcc;
-    color: #111;
-    font-size: clamp(12px, 2vw, 14px);
+    background-color: rgba(26, 26, 26, 0.8);
+    color: #fefefe;
 }
 
 .tabla thead {
-    background-color: #d4b067;
+    background-color: var(--dorado);
     position: sticky;
     top: 0;
     z-index: 10;
     color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .tabla th, .tabla td {
-    padding: clamp(8px, 1.5vw, 12px) clamp(10px, 2vw, 15px);
-    border-bottom: 1px solid #ccc;
+    padding: 15px;
+    border-bottom: 1px solid rgba(212, 176, 103, 0.5);
     text-align: left;
     white-space: nowrap;
 }
 
 .tabla tr:hover {
-    background-color: #f0f0ec;
+    background-color: rgba(212, 176, 103, 0.2);
+}
+
+.tabla th {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .marca-interna {
     margin-top: auto;
     text-align: center;
-    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-size: 1.6rem;
     font-weight: bold;
     color: white;
     pointer-events: none;
     user-select: none;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-    transform: translateY(150%);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    padding-top: 20px;
+    position: relative;
 }
 
-nav {
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: clamp(0.8em, 2vw, 1.5em) clamp(1em, 3vw, 3em);
-    background: #000;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+.marca-interna::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(to right, var(--dorado), #ffffff);
 }
 
-nav .logo {
-    font-size: clamp(1.5em, 4vw, 2em);
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.input {
-    border: none;
-    outline: none;
-    border-radius: 15px;
-    padding: clamp(0.6em, 1.5vw, 1em);
-    background-color: #ccc;
-    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
-    transition: 300ms ease-in-out;
-    width: 100%;
-    box-sizing: border-box;
+@keyframes shine {
+    from {
+        background-position: -100%;
+    }
+    to {
+        background-position: 100%;
+    }
 }
 
-.input:focus {
-    background-color: white;
-    transform: scale(1.05);
-    box-shadow: 13px 13px 100px #969696,
-                -13px -13px 100px #ffffff;
-}
-
+/* Modal de confirmación de eliminación */
 .modal {
     display: none;
     position: fixed;
@@ -232,7 +400,6 @@ nav .logo {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -240,25 +407,21 @@ nav .logo {
 
 .contenedorElimnar {
     background-color: white;
-    padding: clamp(15px, 3vw, 20px);
+    padding: 20px;
     border-radius: 10px;
     text-align: center;
-    width: clamp(250px, 80vw, 300px);
-}
-
-.contenedorElimnar h2 {
-    margin-bottom: clamp(10px, 2vw, 20px);
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    width: 320px;
+    max-width: 90%;
 }
 
 .notificacionEliminar {
-    width: clamp(250px, 80vw, 320px);
+    width: 100%;
     height: auto;
-    font-size: clamp(0.75rem, 2vw, 0.875rem);
-    line-height: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
     display: flex;
     flex-direction: column;
-    gap: clamp(0.5rem, 1.5vw, 1rem);
+    gap: 1rem;
 }
 
 .txt {
@@ -266,50 +429,51 @@ nav .logo {
 }
 
 .fondo {
-    padding: clamp(0.5rem, 1.5vw, 1rem);
+    padding: 0.5rem;
     border-radius: 0.375rem;
     background-color: rgb(240, 253, 244);
 }
 
 .fondo-svg {
     color: rgb(74, 222, 128);
-    width: clamp(1rem, 2vw, 1.25rem);
-    height: clamp(1rem, 2vw, 1.25rem);
+    width: 1.25rem;
+    height: 1.25rem;
 }
 
 .fondoWarning {
-    margin-left: clamp(0.5rem, 1vw, 0.75rem);
+    margin-left: 0.75rem;
 }
 
 .encabezadoWarning {
     font-weight: bold;
     color: rgb(22, 101, 52);
-    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-size: 1rem;
 }
 
 .descripcionWarning {
-    margin-top: clamp(0.3rem, 1vw, 0.5rem);
+    margin-top: 0.5rem;
     color: rgb(21, 128, 61);
-    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+    font-size: 0.9rem;
 }
 
 .fondoBtnWarning {
     display: flex;
-    margin-top: clamp(0.5rem, 1.5vw, 0.875rem);
-    margin-bottom: clamp(-0.5rem, -1vw, -0.375rem);
-    margin-left: clamp(-0.5rem, -1vw, -0.5rem);
-    margin-right: clamp(-0.5rem, -1vw, -0.5rem);
+    margin-top: 0.875rem;
+    margin-bottom: -0.375rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
 }
 
 .btnConfirmarDelete {
-    padding: clamp(0.3rem, 0.8vw, 0.375rem) clamp(0.4rem, 1vw, 0.5rem);
+    padding: 0.375rem 0.5rem;
     background-color: #ECFDF5;
     color: rgb(22, 101, 52);
-    font-size: clamp(0.75rem, 2vw, 0.875rem);
-    line-height: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
     font-weight: bold;
     border-radius: 0.375rem;
     border: none;
+    cursor: pointer;
 }
 
 .btnConfirmarDelete:hover {
@@ -317,102 +481,105 @@ nav .logo {
 }
 
 .noDelete {
-    padding: clamp(0.3rem, 0.8vw, 0.375rem) clamp(0.4rem, 1vw, 0.5rem);
-    margin-left: clamp(0.5rem, 1vw, 0.75rem);
+    padding: 0.375rem 0.5rem;
+    margin-left: 0.75rem;
     background-color: #ECFDF5;
     color: #065F46;
-    font-size: clamp(0.75rem, 2vw, 0.875rem);
-    line-height: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
     border-radius: 0.375rem;
     border: none;
+    cursor: pointer;
 }
 
 .noDelete:hover {
     background-color: #D1FAE5;
 }
 
-/* Media Queries for Responsive Design */
-@media (max-width: 1024px) {
+/* Responsive */
+@media (max-width: 1200px) {
     .contenedor-principal {
-        flex-direction: column;
-        width: 95%;
-        margin: clamp(15px, 4vh, 30px) 0;
+        height: auto;
     }
-
-    .panel-formulario,
-    .panel-tabla {
-        flex: none;
-        width: 100%;
-        padding: clamp(10px, 2.5vw, 20px);
+    .panel-formulario, .panel-tabla {
+        padding: 15px;
     }
-
     .panel-formulario h1 {
-        font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+        font-size: 1.6rem;
     }
-
-    .botones {
-        flex-direction: column;
+    .formulario input {
+        padding: 12px;
+        font-size: 0.9rem;
     }
-
-    button {
-        flex: 1 1 100%;
+    .botones button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 768px) {
-    body {
-        font-size: clamp(12px, 2.2vw, 14px);
+    .contenedor-principal {
+        flex-direction: column;
+        height: auto;
+        width: 95%;
     }
-
-    nav {
-        padding: clamp(0.5em, 1.5vw, 1em) clamp(0.8em, 2vw, 2em);
+    .panel-formulario, .panel-tabla {
+        border-radius: 20px;
+        margin-bottom: 10px;
     }
-
-    nav .logo {
-        font-size: clamp(1.2em, 3.5vw, 1.8em);
+    .panel-formulario h1 {
+        font-size: 1.4rem;
     }
-
+    .formulario input {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+    .botones button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
     .tabla th, .tabla td {
-        padding: clamp(6px, 1.2vw, 10px) clamp(8px, 1.5vw, 12px);
-        font-size: clamp(11px, 1.8vw, 13px);
-    }
-
-    .marca-interna {
-        font-size: clamp(1rem, 2.5vw, 1.4rem);
+        padding: 8px;
+        font-size: 0.7rem;
     }
 }
 
 @media (max-width: 480px) {
+    nav {
+        padding: 0.5em;
+    }
+    nav .logo {
+        font-size: 1.5em;
+    }
     .contenedor-principal {
+        flex-direction: column;
         width: 98%;
-        border-radius: 10px;
+        margin: 10px auto;
     }
-
-    .panel-formulario,
-    .panel-tabla {
-        padding: clamp(8px, 2vw, 15px);
-    }
-
-    .formulario input {
-        padding: clamp(6px, 1.2vw, 10px);
-        font-size: clamp(0.8rem, 1.8vw, 0.9rem);
-    }
-
-    button {
-        font-size: clamp(14px, 2.2vw, 18px);
-        padding: clamp(0.4em, 0.8vw, 0.6em) clamp(0.6em, 1.2vw, 0.9em);
-    }
-
-    .modal {
+    .panel-formulario, .panel-tabla {
         padding: 10px;
+        border-radius: 20px;
+        margin-bottom: 10px;
     }
-
-    .contenedorElimnar {
-        width: clamp(200px, 90vw, 260px);
+    .panel-formulario h1 {
+        font-size: 1.2rem;
     }
-
-    .notificacionEliminar {
-        width: clamp(200px, 90vw, 280px);
-        font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+    .formulario input {
+        padding: 8px;
+        font-size: 0.7rem;
+    }
+    .botones {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .botones button {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+    .tabla th, .tabla td {
+        padding: 6px;
+        font-size: 0.6rem;
+    }
+    .marca-interna {
+        font-size: 1rem;
     }
 }
