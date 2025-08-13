@@ -33,11 +33,11 @@
                     <button type="submit" name="btnAgregar">Agregar</button>
                     <button type="submit" name="btnActualizar">Actualizar</button>
                     <button type="submit" name="btnBuscar">Buscar</button>
-                    <button type="submit" name="btnEliminar">Eliminar</button>
+                     <button type="submit" name="accion" value="Eliminar" class="eliminar-nuevo">Eliminar</button>
                 </div>
             </form>
             <div class="marca-interna">
-                Essenza &amp; Co.
+                Essenza & Co.
             </div>
         </div>
 

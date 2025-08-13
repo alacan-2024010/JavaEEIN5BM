@@ -5,12 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-       <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Essenza | Detalle de Compras</title>
-    <link rel="stylesheet" href="Styles/detalleCompra.css">
+    <link rel="stylesheet" href="Styles/cliente.css">
 </head>
 <body>
 
@@ -18,11 +19,15 @@
         
     </nav>
 
+    <div class="fondo"></div>
+
     <div class="contenedor-principal">
 
-        <div class="form-container">
-            <h2>Gestión de Productos</h2>
-            <form action=""method="post" class="formulario">
+        <!-- Panel Formulario -->
+        <div class="panel-formulario">
+            <h1>Gestión de Detalle de Compras</h1>
+            <form action="" method="post" class="formulario">
+                <input type="text" name="txtCodigoDetalleCompra" placeholder="Cantidad" >
                 <input type="text" name="txtCantidad" placeholder="Cantidad" required>
                 <input type="text" name="txtPrecio" placeholder="Precio Unitario" required>
                 <input type="text" name="txtCodigoCompra" placeholder="Codigo Compra" required>
@@ -32,85 +37,38 @@
                     <button type="submit" name="btnAgregar">Agregar</button>
                     <button type="submit" name="btnActualizar">Actualizar</button>
                     <button type="submit" name="btnBuscar">Buscar</button>
-                    <button type="submit" name="btnEliminar">Eliminar</button>
+                    <button type="submit" name="btnEliminar" class="eliminar">Eliminar</button>
+                </div>
+
+                <div class="marca-interna">
+                    Essenza & Co.
                 </div>
             </form>
         </div>
 
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Cantidad</th>
-                        <th>Precio Unitario</th>
-                        <th>Codigo Compra</th>
-                        <th>Codigo Producto</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Q.200.00</td>
-                        <td>2</td>
-                        <td>240807</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Q.250.00</td>
-                        <td>3</td>
-                        <td>240807</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Q.400.00</td>
-                        <td>4</td>
-                        <td>240807</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Q.450.00</td>
-                        <td>5</td>
-                        <td>240807</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>Q.500.00</td>
-                        <td>6</td>
-                        <td>240807</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>Q.550.00</td>
-                        <td>7</td>
-                        <td>240807</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Q.700.00</td>
-                        <td>8</td>
-                        <td>240807</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Q.750.00</td>
-                        <td>9</td>
-                        <td>240807</td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-        <div class="cube-loader">
-            <div class="cube-top"></div>
-            <div class="cube-wrapper">
-              <span style="--i:0" class="cube-span"></span>
-              <span style="--i:1" class="cube-span"></span>
-              <span style="--i:2" class="cube-span"></span>
-              <span style="--i:3" class="cube-span"></span>
+        <!-- Panel Tabla -->
+        <div class="panel-tabla">
+            <div class="tabla-contenedor">
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Codigo Compra</th>
+                            <th>Codigo Producto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                  
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-          </div>
+        </div>
+
     </div>
 
 </body>
 </html>
-

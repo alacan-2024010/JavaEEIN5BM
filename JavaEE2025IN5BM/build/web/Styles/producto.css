@@ -103,7 +103,7 @@ nav .logo:hover {
         rgba(212, 176, 103, 0) 30%,
         rgba(212, 176, 103, 0.1) 60%,
         rgba(212, 176, 103, 0) 100%
-    );
+        );
     transform: rotate(30deg);
     pointer-events: none;
     animation: shine 5s infinite;
@@ -165,9 +165,9 @@ nav .logo:hover {
     font-size: 1.1rem;
     border: none;
     border-radius: 12px;
-    background-color: #000000;
-    color: white;
-    transition: var(--transicion);
+    background-color: #000000; /* Fondo negro sólido */
+    color: var(--text-color);
+    transition: var(--transition);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(5px);
@@ -175,11 +175,10 @@ nav .logo:hover {
 
 .formulario input:focus {
     outline: none;
-    border-color: var(--dorado);
+    border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(212, 176, 103, 0.5), 0 5px 15px rgba(0, 0, 0, 0.3);
     background-color: rgba(50, 50, 50, 0.8);
 }
-
 .botones {
     display: flex;
     flex-wrap: wrap;
@@ -219,7 +218,7 @@ nav .logo:hover {
         #fef1a2,
         #bc881b,
         #a54e07
-    );
+        );
     border: 1px solid #a55d07;
     color: rgb(120, 50, 5);
     text-shadow: 0 2px 2px rgba(250, 227, 133, 1);
@@ -254,7 +253,7 @@ nav .logo:hover {
         #ff1900 0%,
         #ff5c33 50%,
         #ff1900 100%
-    );
+        );
     border: 1px solid #b52800;
     color: white;
     text-shadow: 0 2px 4px rgba(255, 0, 0, 0.7);
@@ -269,7 +268,7 @@ nav .logo:hover {
         #c01604 0%,
         #ff5c33 50%,
         #c01604 100%
-    );
+        );
     background-size: 150% 150%;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23),
         inset 0 -2px 5px 1px rgba(255, 87, 34, 0.7), inset 0 -1px 1px 3px rgba(255, 87, 34, 0.7);
@@ -283,17 +282,70 @@ nav .logo:hover {
         inset 0 -2px 5px 1px #9e1603, inset 0 -1px 1px 3px rgba(247, 64, 9, 0.5);
 }
 
-/* Ocultar iconos SVG y ajustar botones para que sean solo texto */
-.botones button .svg-wrapper-1,
-.botones button .svg-wrapper,
-.botones button svg {
-    display: none !important;
+.bin-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    background-color: var(--dorado);
+    cursor: pointer;
+    border: 2px solid #fef1a2;
+    transition: var(--transicion);
+    position: relative;
+    overflow: hidden;
+    margin: 20px auto;
 }
 
-.botones button span {
-    display: block;
-    width: 100%;
-    text-align: center;
+.bin-bottom {
+    width: 15px;
+    z-index: 2;
+}
+
+.bin-top {
+    width: 17px;
+    transform-origin: right;
+    transition: var(--transicion);
+    z-index: 2;
+}
+
+.bin-button:hover .bin-top {
+    transform: rotate(45deg);
+}
+
+.bin-button:hover {
+    background-color: var(--hover);
+    border-color: var(--dorado);
+}
+
+.bin-button:active {
+    transform: scale(0.9);
+}
+
+.garbage {
+    position: absolute;
+    width: 14px;
+    height: auto;
+    z-index: 1;
+    opacity: 0;
+    transition: var(--transicion);
+}
+
+.bin-button:hover .garbage {
+    animation: throw 0.4s linear;
+}
+
+@keyframes throw {
+    from {
+        transform: translate(-400%, -700%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0%, 0%);
+        opacity: 1;
+    }
 }
 
 .panel-tabla {
@@ -391,112 +443,6 @@ nav .logo:hover {
     }
 }
 
-/* Modal de confirmación de eliminación */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.contenedorElimnar {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    width: 320px;
-    max-width: 90%;
-}
-
-.notificacionEliminar {
-    width: 100%;
-    height: auto;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.txt {
-    flex-shrink: 0;
-}
-
-.fondo {
-    padding: 0.5rem;
-    border-radius: 0.375rem;
-    background-color: rgb(240, 253, 244);
-}
-
-.fondo-svg {
-    color: rgb(74, 222, 128);
-    width: 1.25rem;
-    height: 1.25rem;
-}
-
-.fondoWarning {
-    margin-left: 0.75rem;
-}
-
-.encabezadoWarning {
-    font-weight: bold;
-    color: rgb(22, 101, 52);
-    font-size: 1rem;
-}
-
-.descripcionWarning {
-    margin-top: 0.5rem;
-    color: rgb(21, 128, 61);
-    font-size: 0.9rem;
-}
-
-.fondoBtnWarning {
-    display: flex;
-    margin-top: 0.875rem;
-    margin-bottom: -0.375rem;
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-}
-
-.btnConfirmarDelete {
-    padding: 0.375rem 0.5rem;
-    background-color: #ECFDF5;
-    color: rgb(22, 101, 52);
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: bold;
-    border-radius: 0.375rem;
-    border: none;
-    cursor: pointer;
-}
-
-.btnConfirmarDelete:hover {
-    background-color: #D1FAE5;
-}
-
-.noDelete {
-    padding: 0.375rem 0.5rem;
-    margin-left: 0.75rem;
-    background-color: #ECFDF5;
-    color: #065F46;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    border-radius: 0.375rem;
-    border: none;
-    cursor: pointer;
-}
-
-.noDelete:hover {
-    background-color: #D1FAE5;
-}
-
-/* Responsive */
 @media (max-width: 1200px) {
     .contenedor-principal {
         height: auto;

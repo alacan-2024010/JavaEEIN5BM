@@ -21,10 +21,10 @@
                 <li><a href="Controlador?menu=Producto" target="contenido">Productos</a></li>
                 <li><a href="Controlador?menu=Empleado&accion=Listar" target="contenido">Empleados</a></li>
                 <li><a href="Controlador?menu=Venta" target="contenido">Ventas</a></li>
-                <li><a href="Controlador?menu=detalleVenta" target="contenido">Detalle Ventas</a></li>
+                <li><a href="Controlador?menu=DetalleVenta" target="contenido">Detalle Ventas</a></li>
                 <li><a href="Controlador?menu=Factura" target="contenido">Facturas</a></li>
-                <li><a href="Controlador?menu=Compras" target="contenido">Compras</a></li>
-                <li><a href="Controlador?menu=detalleCompras" target="contenido">Detalle Compras</a></li>
+                <li><a href="Controlador?menu=Compra" target="contenido">Compras</a></li>
+                <li><a href="Controlador?menu=DetalleCompra" target="contenido">Detalle Compras</a></li>
                 <li class="avatar">
                     <img src="img/UsuarioAdmin.png" alt="Avatar">
                     <ul class="avatar-menu">
